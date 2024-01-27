@@ -8,12 +8,12 @@ namespace FetchNASAAPIApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
             builder.Services.AddHttpClient();
-
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
             builder.Services.AddScoped<INasaApiService, NasaApiService>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
