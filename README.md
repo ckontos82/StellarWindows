@@ -7,7 +7,7 @@ The app can fetch data for any date from 16th June 1995 to the current date. The
 It uses the DEMO_KEY for the API key, which is limited to 30 requests per hour and 50 requests per day. If you want to use it more often, you need to get your own API key from [NASA API](https://api.nasa.gov/).
 
  All the data is fetched from [NASA API](https://api.nasa.gov/) which is free to use.
-## The copyright of the data belongs to NASA. I do not own any. I have only written the code for fetching the data using the API.
+## The copyright of the data belongs to NASA and their respective owners. I do not own any. I have only written the code for fetching the data using the API.
 
 ### To Do:
 
