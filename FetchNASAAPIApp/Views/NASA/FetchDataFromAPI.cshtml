@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Picture>;
+
+@{
+    ViewData["Title"] = "NASA API Response";
+}
+
+<div>
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <h1>@item.Title</h1>
+
+            <p><strong>Explanation:</strong> @item.Explanation</p>
+            @if (!string.IsNullOrEmpty(item.Hdurl))
+            {
+                <p><strong>HD Image:</strong> <img src="@item.Hdurl" alt="NASA Image" style="width: auto; height: 540px"></p>
+            }
+            else if (!string.IsNullOrEmpty(item.Url))
+            {
+                <p><strong>Image:</strong><img src="@item.Url" alt="NASA Image" style="width:fit-content; height:auto"></p>
+            }
+            <p><strong>Copyright:</strong> @item?.Copyright</p>
+            <p><strong>Media Type:</strong> @item?.Media_type</p>
+            <p><strong>Service Version:</strong> @item?.Service_version</p>
+            <p><strong>Date:</strong> @item?.Date</p>
+        }
+    }
+    else
+    {
+        <p>No data available. Please try again with different parameters.</p>
+    }
+</div>

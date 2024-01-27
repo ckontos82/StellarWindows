@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "NASA Data Fetch";
+}
+
+<h2>Fetch Data from NASA API</h2>
+
+<form asp-controller="NASA" asp-action="FetchDataFromAPI" method="get">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="Date">
+
+    <label for="count">Count:</label>
+    <input type="number" id="count" name="Count">
+
+    <label for="thumbs">Thumbs:</label>
+    <input type="checkbox" id="thumbs" name="Thumbs">
+
+    <input type="submit" value="Fetch Data">
+</form>
+
