@@ -1,9 +1,10 @@
-﻿using FetchNASAAPIApp.Models;
+﻿using FetchNASAAPIApp.DTOs;
+using FetchNASAAPIApp.Models;
 
 namespace FetchNASAAPIApp.Services.Interfaces
 {
     public interface INasaApiService
     {
-        Task<List<Picture>> FetchData(NasaApiRequestParams nasaApiRequestParams);
+        Task<List<PictureDTO>> FetchData(NasaApiRequestParams nasaApiRequestParams);
     }
 }

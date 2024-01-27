@@ -1,4 +1,5 @@
-﻿using FetchNASAAPIApp.Models;
+﻿using FetchNASAAPIApp.DTOs;
+using FetchNASAAPIApp.Models;
 using FetchNASAAPIApp.Services.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,7 +16,7 @@ namespace FetchNASAAPIApp.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<Picture>> FetchData(NasaApiRequestParams nasaApiRequestParams)
+        public async Task<List<PictureDTO>> FetchData(NasaApiRequestParams nasaApiRequestParams)
         {
             var requestParams = new List<string>();
 
@@ -48,17 +49,17 @@ namespace FetchNASAAPIApp.Services
                 response.EnsureSuccessStatusCode();
 
                 var responseContent = await response.Content.ReadAsStringAsync();
-                var nasaResponse = new List<Picture>();
+                var nasaResponse = new List<PictureDTO>();
 
                 var token = JToken.Parse(responseContent);
 
                 if (token is JArray)
                 {
-                    nasaResponse = JsonConvert.DeserializeObject<List<Picture>>(responseContent);
+                    nasaResponse = JsonConvert.DeserializeObject<List<PictureDTO>>(responseContent);
                 }
                 else if (token is JObject)
                 {
-                    nasaResponse.Add(JsonConvert.DeserializeObject<Picture>(responseContent));
+                    nasaResponse.Add(JsonConvert.DeserializeObject<PictureDTO>(responseContent));
                 }
 
                 return nasaResponse;
