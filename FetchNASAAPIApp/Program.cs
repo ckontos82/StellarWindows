@@ -1,3 +1,6 @@
+using FetchNASAAPIApp.Services;
+using FetchNASAAPIApp.Services.Interfaces;
+
 namespace FetchNASAAPIApp
 {
     public class Program
@@ -10,6 +13,7 @@ namespace FetchNASAAPIApp
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddTransient<INasaApiService, NasaApiService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
