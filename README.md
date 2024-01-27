@@ -11,6 +11,6 @@ It uses the DEMO_KEY for the API key, which is limited to 30 requests per hour a
 
 ### To Do:
 
-- [x] Add crud operations for the data.
-- [x] Improve UI/UX.  
-- [x] Minor Bug Fixes and logging.  
+- [] Add crud operations for the data.
+- [] Improve UI/UX.  
+- [] Minor Bug Fixes and logging.  
