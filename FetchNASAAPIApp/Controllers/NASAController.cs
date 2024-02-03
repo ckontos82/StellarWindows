@@ -23,20 +23,26 @@ namespace FetchNASAAPIApp.Controllers
 
         public async Task<IActionResult> GetPicture(NasaApiRequestParams nasaApiRequestParams)
         {
-            var picturesDto = await _nasaApiService.FetchData(nasaApiRequestParams);
-            var pictures = picturesDto.Select(p => new Picture
+            try
             {
-                Copyright = p.Copyright,
-                Date = p.Date,
-                Explanation = p.Explanation,
-                Hdurl = p.Hdurl,
-                Media_type = p.Media_type,
-                Service_version = p.Service_version,
-                Title = p.Title,
-                Url = p.Url
-            }).ToList();
+                var picturesDto = await _nasaApiService.FetchData(nasaApiRequestParams);
+                var pictures = picturesDto.Select(p => new Picture
+                {
+                    Copyright = p.Copyright,
+                    Date = p.Date,
+                    Explanation = p.Explanation,
+                    Hdurl = p.Hdurl,
+                    Media_type = p.Media_type,
+                    Service_version = p.Service_version,
+                    Title = p.Title,
+                    Url = p.Url
+                }).ToList();
 
-            return View(pictures);
+                return View(pictures);
+            } catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }
