@@ -9,12 +9,14 @@ namespace FetchNASAAPIApp.Services
     public class NasaApiService : INasaApiService
     {
         private HttpClient _httpClient;
-        private const string _baseUrl = "https://api.nasa.gov/planetary/apod?";
-
+        
         public NasaApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
+
+        private const string _baseUrl = "https://api.nasa.gov/planetary/apod?";
+        private const string _defaultApiKey = "DEMO_KEY";
 
         public async Task<List<PictureDTO>> FetchData(NasaApiRequestParams nasaApiRequestParams)
         {
@@ -38,7 +40,11 @@ namespace FetchNASAAPIApp.Services
                 }
             }
 
-            requestParams.Add($"api_key={nasaApiRequestParams.ApiKey}");
+            string apiKey = string.IsNullOrEmpty(nasaApiRequestParams.ApiKey)
+                            ? _defaultApiKey
+                            : nasaApiRequestParams.ApiKey;
+
+            requestParams.Add($"api_key={apiKey}");
 
             string queryString = string.Join("&", requestParams);
             string url = $"{_baseUrl}{queryString}";
