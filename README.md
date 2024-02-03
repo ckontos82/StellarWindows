@@ -1,4 +1,4 @@
-﻿﻿# Fetch NASA Astronomy Image of the Day API DATA
+﻿# Fetch NASA Astronomy Picture of the Day
 
 ## App written in ASP.NET Core for fetching NASA Astronomy Image of the Day API data and displaying it on the page.
 
