@@ -16,5 +16,3 @@ It uses the DEMO_KEY for the API key, which is limited to 30 requests per hour a
 - [ ] Add crud operations for the data.
 - [ ] Improve UI/UX.  
 - [ ] Minor Bug Fixes and logging.
-
-- Note: If you just want to run locally the published self-contained webapp you should run the app and open your browser the http://localhost:5001
