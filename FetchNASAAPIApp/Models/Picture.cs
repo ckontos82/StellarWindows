@@ -2,6 +2,7 @@
 {
     public class Picture
     {
+        public int Id { get; set; } 
         public string Copyright {get;set;}
         public DateOnly Date { get;set;}
         public string Explanation { get;set;}

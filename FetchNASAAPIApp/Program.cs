@@ -1,5 +1,7 @@
+using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Services;
 using FetchNASAAPIApp.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FetchNASAAPIApp
 {
@@ -13,7 +15,10 @@ namespace FetchNASAAPIApp
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<INasaApiService, NasaApiService>();
-            
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
