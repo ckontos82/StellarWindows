@@ -16,3 +16,5 @@ It uses the DEMO_KEY for the API key, which is limited to 30 requests per hour a
 - [ ] Add crud operations for the data.
 - [ ] Improve UI/UX.  
 - [ ] Minor Bug Fixes and logging.
+
+- DbContext added. You can create a local db by using a migration. 
