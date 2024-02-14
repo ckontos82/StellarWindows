@@ -18,3 +18,4 @@ It uses the DEMO_KEY for the API key, which is limited to 30 requests per hour a
 - [ ] Minor Bug Fixes and logging.
 
 - DbContext added. You can create a local db by using a migration. 
+- Added an implementation to store data in local db. It will soon be updated with design patterns, and ability to search, display and delete records. 
