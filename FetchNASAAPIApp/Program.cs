@@ -1,3 +1,5 @@
+using FetchNASAAPIApp.DAO;
+using FetchNASAAPIApp.DAO.Interface;
 using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Services;
 using FetchNASAAPIApp.Services.Interfaces;
@@ -18,6 +20,7 @@ namespace FetchNASAAPIApp
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IPictureDAO, PictureDAO>();
 
             var app = builder.Build();
 

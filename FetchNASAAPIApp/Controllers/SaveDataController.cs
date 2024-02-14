@@ -1,4 +1,5 @@
-﻿using FetchNASAAPIApp.Database;
+﻿using FetchNASAAPIApp.DAO.Interface;
+using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,20 +8,19 @@ namespace FetchNASAAPIApp.Controllers
 {
     public class SaveDataController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IPictureDAO _pictureDAO;
 
-        public SaveDataController(ApplicationDbContext context)
+        public SaveDataController(IPictureDAO pictureDAO)
         {
-            _context = context;
+            _pictureDAO = pictureDAO;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Picture picture)
+        public async Task<IActionResult> CreateEntry(Picture picture)
         {
             if (ModelState.IsValid)
             {
-                _context.Pictures.Add(picture);
-                await _context.SaveChangesAsync();
+                await _pictureDAO.CreateEntryAsync(picture);
                 return RedirectToAction(nameof(Index), "NASA");
             }
 

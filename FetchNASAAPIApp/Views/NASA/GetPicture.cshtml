@@ -9,7 +9,7 @@
     {
         @foreach (var item in Model)
         {
-            <form asp-controller="SaveData" asp-action="Create" method="post">
+            <form asp-controller="SaveData" asp-action="CreateEntry" method="post">
                 <input type="hidden" name="Title" value="@item.Title" />
                 <input type="hidden" name="Copyright" value="@item.Copyright" />
                 <input type="hidden" name="Date" value="@item.Date" />
