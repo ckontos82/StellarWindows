@@ -9,21 +9,35 @@
     {
         @foreach (var item in Model)
         {
-            <h1>@item.Title</h1>
+            <form asp-controller="SaveData" asp-action="Create" method="post">
+                <input type="hidden" name="Title" value="@item.Title" />
+                <input type="hidden" name="Copyright" value="@item.Copyright" />
+                <input type="hidden" name="Date" value="@item.Date" />
+                <input type="hidden" name="Explanation" value="@item.Explanation" />
+                <input type="hidden" name="Hdurl" value="@item.Hdurl" />
+                <input type="hidden" name="Media_type" value="@item.Media_type" />
+                <input type="hidden" name="Service_version" value="@item.Service_version" />
+                <input type="hidden" name="Url" value="@item.Url" />
+                
 
-            <p><strong>Explanation:</strong> @item.Explanation</p>
-            @if (!string.IsNullOrEmpty(item.Hdurl))
-            {
-                <p><strong>HD Image:</strong><a href="@item.Hdurl" target="_blank"><img src="@item.Hdurl" alt="NASA Image" style="width: auto; height: 540px"></a></p>
-            }
-            else if (!string.IsNullOrEmpty(item.Url))
-            {
-                <p><strong>Image:</strong><img src="@item.Url" alt="NASA Image" style="width:fit-content; height:auto"></p>
-            }
-            <p><strong>Copyright:</strong> @item?.Copyright</p>
-            <p><strong>Media Type:</strong> @item?.Media_type</p>
-            <p><strong>Service Version:</strong> @item?.Service_version</p>
-            <p><strong>Date:</strong> @item?.Date</p>
+                <h1>@item.Title</h1>
+
+                <p><strong>Explanation:</strong> @item.Explanation</p>
+                @if (!string.IsNullOrEmpty(item.Hdurl))
+                {
+                    <p><strong>HD Image:</strong><a href="@item.Hdurl" target="_blank"><img src="@item.Hdurl" alt="NASA Image" style="width: auto; height: 540px"></a></p>
+                }
+                else if (!string.IsNullOrEmpty(item.Url))
+                {
+                    <p><strong>Image:</strong><img src="@item.Url" alt="NASA Image" style="width:fit-content; height:auto"></p>
+                }
+                <p><strong>Copyright:</strong> @item?.Copyright</p>
+                <p><strong>Media Type:</strong> @item?.Media_type</p>
+                <p><strong>Service Version:</strong> @item?.Service_version</p>
+                <p><strong>Date:</strong> @item?.Date</p>
+
+                <button type="submit" class="btn btn-primary rounded-3"><strong>Save Record</strong></button>
+            </form>
         }
     }
     else
