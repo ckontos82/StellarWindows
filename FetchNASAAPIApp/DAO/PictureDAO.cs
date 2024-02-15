@@ -1,6 +1,7 @@
 ﻿using FetchNASAAPIApp.DAO.Interface;
 using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FetchNASAAPIApp.DAO
 {
@@ -17,6 +18,11 @@ namespace FetchNASAAPIApp.DAO
         {
             _context.Pictures.Add(picture);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Picture> GetPictureByDateAsync(DateOnly date)
+        {
+            return await _context.Pictures.FirstOrDefaultAsync(p => p.Date == date);
         }
     }
 }
