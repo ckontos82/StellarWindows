@@ -1,6 +1,7 @@
 ﻿using FetchNASAAPIApp.DAO.Interface;
 using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Models;
+using FetchNASAAPIApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,11 +9,11 @@ namespace FetchNASAAPIApp.Controllers
 {
     public class SaveDataController : Controller
     {
-        private readonly IPictureDAO _pictureDAO;
+        private readonly IPictureService _pictureService;
 
-        public SaveDataController(IPictureDAO pictureDAO)
+        public SaveDataController(IPictureService pictureService)
         {
-            _pictureDAO = pictureDAO;
+            _pictureService = pictureService;
         }
 
         [HttpPost]
@@ -20,7 +21,7 @@ namespace FetchNASAAPIApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _pictureDAO.CreateEntryAsync(picture);
+                await _pictureService.CreateEntryAsync(picture);
                 return RedirectToAction(nameof(Index), "NASA");
             }
 

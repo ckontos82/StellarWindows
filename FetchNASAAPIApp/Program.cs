@@ -16,11 +16,12 @@ namespace FetchNASAAPIApp
             builder.Services.AddHttpClient();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<INasaApiService, NasaApiService>();
 
+            builder.Services.AddScoped<INasaApiService, NasaApiService>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IPictureDAO, PictureDAO>();
+            builder.Services.AddScoped<IPictureService, PictureService>();
 
             var app = builder.Build();
 
