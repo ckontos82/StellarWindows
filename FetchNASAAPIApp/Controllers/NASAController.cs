@@ -23,7 +23,8 @@ namespace FetchNASAAPIApp.Controllers
 
         public async Task<IActionResult> GetPicture(NasaApiRequestParams nasaApiRequestParams)
         {
-            try
+			ViewData["ShowSaveButton"] = false;
+			try
             {
                 var picturesDto = await _nasaApiService.FetchData(nasaApiRequestParams);
                 var pictures = picturesDto.Select(p => new Picture

@@ -16,7 +16,8 @@ namespace FetchNASAAPIApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPicture(DateOnly date)
         {
-            var picture = await _pictureService.GetPictureByDateAsync(date);
+			ViewData["ShowSaveButton"] = false;
+			var picture = await _pictureService.GetPictureByDateAsync(date);
            
             if (picture != null)
             {
@@ -31,7 +32,8 @@ namespace FetchNASAAPIApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPictures()
         {
-            var pictures = await _pictureService.GetAllPicturesAsync();
+			ViewData["ShowSaveButton"] = false;
+			var pictures = await _pictureService.GetAllPicturesAsync();
             return View(pictures);
         }
     }

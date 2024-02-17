@@ -43,7 +43,10 @@
                 <p><strong>Service Version:</strong> @item?.Service_version</p>
                 <p><strong>Date:</strong> @item?.Date</p>
 
-                <button type="submit" class="btn btn-primary rounded-3"><strong>Save Record</strong></button>
+                @if (ViewData["ShowSaveButton"] as bool? ?? false)
+                {
+                    <button type="submit" class="btn btn-primary rounded-3"><strong>Save Record</strong></button>
+                }
             </form>
         }
     }
