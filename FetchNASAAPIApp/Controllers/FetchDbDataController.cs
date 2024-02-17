@@ -30,6 +30,7 @@ namespace FetchNASAAPIApp.Controllers
         }
 
         [HttpGet]
+        [Route("FetchDbData/GetAllPicturesAsync")]
         public async Task<IActionResult> GetAllPicturesAsync()
         {
             var pictures = await pictureDAO.GetAllPicturesAsync();
