@@ -1,7 +1,9 @@
 ﻿using FetchNASAAPIApp.DAO.Interface;
 using FetchNASAAPIApp.Database;
 using FetchNASAAPIApp.Models;
+using FetchNASAAPIApp.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace FetchNASAAPIApp.DAO
 {
@@ -26,6 +28,11 @@ namespace FetchNASAAPIApp.DAO
             await _context.SaveChangesAsync();
 
             return (true, "Picture saved successfully.");
+        }
+
+        public async Task<IEnumerable<Picture>> GetAllPicturesAsync()
+        {
+            return await _context.Pictures.ToListAsync();
         }
 
         public async Task<Picture> GetPictureByDateAsync(DateOnly date)

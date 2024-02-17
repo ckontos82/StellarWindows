@@ -15,6 +15,7 @@
                     @TempData["Message"]
                 </div>
             }
+
             <form asp-controller="SaveData" asp-action="CreateEntry" method="post" class="pb-4">
                 <input type="hidden" name="Title" value="@item.Title" />
                 <input type="hidden" name="Copyright" value="@item.Copyright" />

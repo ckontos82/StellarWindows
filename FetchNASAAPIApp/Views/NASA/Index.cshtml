@@ -22,10 +22,14 @@
 
 <div class="shadow-lg p-5 rounded-3">
     <div class="card-header mt-5 mb-5"> Search for an image in local db.</div>
-        <form asp-controller="FetchDbData" asp-action="GetPicture" method="get">
+        <form asp-controller="FetchDbData" asp-action="GetPicture" method="get" class="mb-3">
             <label for="date">Date:</label>
             <input type="date" id="date" name="Date" />
 
             <button type="submit" class="btn btn-primary rounded-3"><strong>Fetch image</strong></button>
         </form>
+
+    <a asp-controller="FetchDbData" asp-action="GetAllPicturesAsync" method="get" class="btn btn-primary mt-4 ">Fetch all data</a>
+
+        
 </div>

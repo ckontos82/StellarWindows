@@ -28,5 +28,12 @@ namespace FetchNASAAPIApp.Controllers
                 
             else return NotFound("No picture found for the selected date.");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllPicturesAsync()
+        {
+            var pictures = await pictureDAO.GetAllPicturesAsync();
+            return View(pictures);
+        }
     }
 }
