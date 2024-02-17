@@ -1,6 +1,7 @@
 ﻿using FetchNASAAPIApp.DAO.Interface;
 using FetchNASAAPIApp.Models;
 using FetchNASAAPIApp.Services.Interfaces;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FetchNASAAPIApp.Services
 {
@@ -21,6 +22,11 @@ namespace FetchNASAAPIApp.Services
         public async Task<(bool, string)> CreateEntryAsync(Picture picture)
         {
             return await _pictureDAO.CreateEntryAsync(picture);
+        }
+
+        public async Task<IEnumerable<Picture>> GetAllPicturesAsync()
+        {
+            return await _pictureDAO.GetAllPicturesAsync();
         }
     }
 }

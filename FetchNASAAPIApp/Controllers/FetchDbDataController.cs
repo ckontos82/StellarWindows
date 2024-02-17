@@ -1,23 +1,22 @@
-﻿using FetchNASAAPIApp.DAO.Interface;
-using FetchNASAAPIApp.Models;
+﻿using FetchNASAAPIApp.Models;
+using FetchNASAAPIApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FetchNASAAPIApp.Controllers
 {
     public class FetchDbDataController : Controller
     {
-        private readonly IPictureDAO pictureDAO;
+        private readonly IPictureService _pictureService;
 
-        public FetchDbDataController(IPictureDAO pictureDAO)
+        public FetchDbDataController(IPictureService pictureService)
         {
-            this.pictureDAO = pictureDAO;
+            _pictureService = pictureService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetPicture(DateOnly date)
         {
-            var picture = await pictureDAO.GetPictureByDateAsync(date);
+            var picture = await _pictureService.GetPictureByDateAsync(date);
            
             if (picture != null)
             {
@@ -32,7 +31,7 @@ namespace FetchNASAAPIApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPictures()
         {
-            var pictures = await pictureDAO.GetAllPicturesAsync();
+            var pictures = await _pictureService.GetAllPicturesAsync();
             return View(pictures);
         }
     }

@@ -6,6 +6,7 @@
 			<th>ID</th>
 			<th>Title</th>
 			<th>Date</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,6 +16,12 @@
 				<td>@picture.Id</td>
 				<td>@picture.Title</td>
 				<td>@picture.Date</td>
+				<td>
+					<form asp-controller="FetchDbData" asp-action="GetPicture" method="get" class="pb-4">
+						<input type="hidden" name="Date" value="@picture.Date" />
+						<button type="submit" class="btn btn-secondary rounded-3"><strong>Display Record</strong></button>
+					</form>
+				</td>
 			</tr>
 		}
 	</tbody>
