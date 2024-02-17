@@ -18,9 +18,9 @@ namespace FetchNASAAPIApp.Services
             return await _pictureDAO.GetPictureByDateAsync(date);
         }
 
-        public async Task CreateEntryAsync(Picture picture)
+        public async Task<(bool, string)> CreateEntryAsync(Picture picture)
         {
-            await _pictureDAO.CreateEntryAsync(picture);
+            return await _pictureDAO.CreateEntryAsync(picture);
         }
     }
 }

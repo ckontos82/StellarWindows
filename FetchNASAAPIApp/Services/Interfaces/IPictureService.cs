@@ -5,6 +5,6 @@ namespace FetchNASAAPIApp.Services.Interfaces
     public interface IPictureService
     {
         Task<Picture> GetPictureByDateAsync(DateOnly date);
-        Task CreateEntryAsync(Picture picture);
+        Task<(bool, string)> CreateEntryAsync(Picture picture);
     }
 }

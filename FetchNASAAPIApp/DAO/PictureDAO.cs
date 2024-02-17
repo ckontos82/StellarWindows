@@ -14,10 +14,18 @@ namespace FetchNASAAPIApp.DAO
             _context = context;
         }
 
-        public async Task CreateEntryAsync(Picture picture)
+        public async Task<(bool isSuccess, string message)> CreateEntryAsync(Picture picture)
         {
+            if (await _context.Pictures.AnyAsync(p => p.Date == picture.Date))
+            {
+                return (false, "Picture already exists in the database.");
+            }
+
+
             _context.Pictures.Add(picture);
             await _context.SaveChangesAsync();
+
+            return (true, "Picture saved successfully.");
         }
 
         public async Task<Picture> GetPictureByDateAsync(DateOnly date)

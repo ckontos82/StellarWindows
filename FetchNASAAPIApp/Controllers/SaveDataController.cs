@@ -21,11 +21,12 @@ namespace FetchNASAAPIApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _pictureService.CreateEntryAsync(picture);
-                return RedirectToAction(nameof(Index), "NASA");
+                var (isSuccess, message) = await _pictureService.CreateEntryAsync(picture);
+                TempData["Message"] = message;
+                return RedirectToAction("GetPicture", "NASA");
             }
 
-            return View(picture);
+            return View("Index");
         }
     }
 }
