@@ -16,7 +16,6 @@ namespace FetchNASAAPIApp.Services
             _httpClient = httpClientFactory.CreateClient("NasaClient");
         }
 
-        //private const string _baseUrl = "https://api.nasa.gov/planetary/apod?";
         private const string _defaultApiKey = "DEMO_KEY";
 
         public async Task<List<PictureDTO>> FetchData(NasaApiRequestParams nasaApiRequestParams)
