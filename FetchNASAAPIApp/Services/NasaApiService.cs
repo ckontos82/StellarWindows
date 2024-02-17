@@ -3,6 +3,7 @@ using FetchNASAAPIApp.Models;
 using FetchNASAAPIApp.Services.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace FetchNASAAPIApp.Services
 {
@@ -10,12 +11,12 @@ namespace FetchNASAAPIApp.Services
     {
         private HttpClient _httpClient;
         
-        public NasaApiService(HttpClient httpClient)
+        public NasaApiService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("NasaClient");
         }
 
-        private const string _baseUrl = "https://api.nasa.gov/planetary/apod?";
+        //private const string _baseUrl = "https://api.nasa.gov/planetary/apod?";
         private const string _defaultApiKey = "DEMO_KEY";
 
         public async Task<List<PictureDTO>> FetchData(NasaApiRequestParams nasaApiRequestParams)
@@ -47,7 +48,7 @@ namespace FetchNASAAPIApp.Services
             requestParams.Add($"api_key={apiKey}");
 
             string queryString = string.Join("&", requestParams);
-            string url = $"{_baseUrl}{queryString}";
+            string url = $"apod?{queryString}";
 
             try
             {

@@ -12,9 +12,14 @@ namespace FetchNASAAPIApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            
-            builder.Services.AddHttpClient();
+
             // Add services to the container.
+            builder.Services.AddHttpClient("NasaClient", client =>
+            {
+                client.BaseAddress = new Uri("https://api.nasa.gov/planetary/");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<INasaApiService, NasaApiService>();
