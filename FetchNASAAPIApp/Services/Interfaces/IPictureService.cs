@@ -7,5 +7,6 @@ namespace FetchNASAAPIApp.Services.Interfaces
         Task<Picture> GetPictureByDateAsync(DateOnly date);
         Task<(bool, string)> CreateEntryAsync(Picture picture);
         Task<IEnumerable<Picture>> GetAllPicturesAsync();
+        Task<(bool, string)> DeleteEntryAsync(Picture picture);
     }
 }

@@ -28,5 +28,10 @@ namespace FetchNASAAPIApp.Services
         {
             return await _pictureDAO.GetAllPicturesAsync();
         }
+
+        public async Task<(bool, string)> DeleteEntryAsync(Picture picture)
+        {
+            return await _pictureDAO.DeleteEntryAsync(picture);
+        }
     }
 }

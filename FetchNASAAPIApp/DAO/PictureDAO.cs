@@ -39,5 +39,13 @@ namespace FetchNASAAPIApp.DAO
         {
             return await _context.Pictures.FirstOrDefaultAsync(p => p.Date == date);
         }
+
+        public async Task<(bool isSuccess, string message)> DeleteEntryAsync(Picture picture)
+        {
+            _context.Pictures.Remove(picture);
+            await _context.SaveChangesAsync();
+
+            return (true, $"Picture with date {picture.Date} deleted.");
+        }
     }
 }

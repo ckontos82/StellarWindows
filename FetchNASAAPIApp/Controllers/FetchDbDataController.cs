@@ -36,5 +36,13 @@ namespace FetchNASAAPIApp.Controllers
 			var pictures = await _pictureService.GetAllPicturesAsync();
             return View(pictures);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeletePicture(Picture picture)
+        {
+            ViewData["DeleteDialog"] = true;
+            await _pictureService.DeleteEntryAsync(picture);
+            return View(picture);
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace FetchNASAAPIApp.DAO.Interface
         Task<(bool isSuccess, string message)> CreateEntryAsync(Picture picture);
         Task<IEnumerable<Picture>> GetAllPicturesAsync();
         Task<Picture> GetPictureByDateAsync(DateOnly date);
+        Task<(bool isSuccess, string message)> DeleteEntryAsync(Picture picture);
     }
 }

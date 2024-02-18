@@ -21,6 +21,10 @@
 						<input type="hidden" name="Date" value="@picture.Date" />
 						<button type="submit" class="btn btn-secondary rounded-2"><strong>Display Record</strong></button>
 					</form>
+					<form asp-controller="FetchDbData" asp-action="DeletePicture" method="post" class="pb-4">
+						<input type="hidden" name="Date" value="@picture.Date" />
+						<button type="submit" class="btn btn-danger rounded-2"><strong>Delete Record</strong></button>
+					</form>
 				</td>
 			</tr>
 		}
