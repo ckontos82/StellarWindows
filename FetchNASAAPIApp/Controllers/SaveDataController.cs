@@ -23,10 +23,9 @@ namespace FetchNASAAPIApp.Controllers
             {
                 var (isSuccess, message) = await _pictureService.CreateEntryAsync(picture);
                 TempData["Message"] = message;
-                return RedirectToAction("GetPicture", "NASA");
             }
 
-            return View("Index");
-        }
+			return RedirectToAction("GetPicture", "NASA");
+		}
     }
 }
