@@ -32,7 +32,7 @@ namespace FetchNASAAPIApp.DAO
 
         public async Task<IEnumerable<Picture>> GetAllPicturesAsync()
         {
-            return await _context.Pictures.ToListAsync();
+            return await _context.Pictures.OrderByDescending(p => p.Date).ToListAsync();
         }
 
         public async Task<Picture> GetPictureByDateAsync(DateOnly date)
